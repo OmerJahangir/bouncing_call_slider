@@ -19,7 +19,7 @@ A beautiful and highly customizable Flutter widget that mimics an incoming call 
 
 ## 📷 Demo
 
-<img src="screenshots/demo.gif" width="300"/>
+<img src="screenshot/demo.gif" width="300"/>
 
 ---
 
