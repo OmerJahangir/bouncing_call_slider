@@ -1,7 +1,7 @@
 name: bouncing_call_slider
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: A customizable Flutter widget that mimics an incoming call slider with bounce animation, swipe-to-accept or decline, and haptic feedback. Ideal for call UI.
+version: 1.0.0
+repository: https://github.com/OmerJahangir/bouncing_call_slider/issues
 
 environment:
   sdk: ^3.7.2
