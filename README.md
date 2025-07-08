@@ -19,7 +19,7 @@ A beautiful and highly customizable Flutter widget that mimics an incoming call 
 
 ## 📷 Demo
 
-| (screenshots/demo1.gif)  |
+<img src="screenshots/demo.gif" width="300"/>
 
 ---
 
@@ -52,7 +52,7 @@ BouncingCallSlider(
 ```
 
 ## ⚙️ Customization Parameters
-```dart
+
 | Parameter                | Type           | Description                        | Default                   |
 | ------------------------ | -------------- | ---------------------------------- | ------------------------- |
 | `onAccept`               | `VoidCallback` | Called when user slides up         | **Required**              |
@@ -72,15 +72,17 @@ BouncingCallSlider(
 | `iconSize`               | `double`       | Size of the icon inside the button | `35`                      |
 | `buttonSize`             | `double`       | Diameter of the call button        | `70`                      |
 
-```
+
 
 ## 📂 Example App
 You can find a full example inside the example/ folder.
 
 To run it:
 
+```dart
 cd example
 flutter run
+```
 
 ## 📄 License
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.

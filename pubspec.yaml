@@ -16,6 +16,10 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+screenshots:
+  - path: screenshot/demo.gif
+    description: Bouncing call slider demo
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
