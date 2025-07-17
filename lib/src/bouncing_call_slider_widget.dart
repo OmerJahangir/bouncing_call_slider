@@ -5,11 +5,11 @@ class BouncingCallSlider extends StatefulWidget {
   final VoidCallback onAccept;
   final VoidCallback onDecline;
 
-  // Customizable labels
+  /// Customizable labels
   final String acceptText;
   final String declineText;
 
-  // Style options
+  /// Style options
   final TextStyle? textStyle;
 
   final Color acceptTextColor;
@@ -18,11 +18,11 @@ class BouncingCallSlider extends StatefulWidget {
   final Color iconColorDecline;
   final Color callBtnBackgroundColor;
 
- // Icons can be replaced with custom widgets
+ /// Icons can be replaced with custom widgets
   final Widget? acceptIcon;
   final Widget? declineIcon;
  
-  // Dimensions
+  /// Dimensions
   final double height;
   final double width;
   final double iconSize;
@@ -55,11 +55,11 @@ class BouncingCallSlider extends StatefulWidget {
 class _BouncingCallSliderState extends State<BouncingCallSlider>
     with TickerProviderStateMixin {
   double _dragPosition = 0.0;
-  // final double _dragThreshold = 80.0; // Min distance required to trigger action
+  /// final double _dragThreshold = 80.0; /// Min distance required to trigger action
   bool _hapticTriggered = false;
   bool _hasTriggeredAtTop = false;
 
-  // Controllers and animations for reset, bounce, shake, and rotate
+  /// Controllers and animations for reset, bounce, shake, and rotate
   late AnimationController _resetController;
   late Animation<double> _resetAnimation;
 
@@ -75,25 +75,25 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
   void initState() {
     super.initState();
 
-    // Animation to return button to center after drag
+    /// Animation to return button to center after drag
     _resetController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250),
     );
 
-    // Bounce effect for idle call button
+    /// Bounce effect for idle call button
     _bounceController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 3000),
     )..repeat();
 
-    // Rotation animation triggered during bounce
+    /// Rotation animation triggered during bounce
     _rotationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
 
-    // Create bounce animation using easing curves
+    /// Create bounce animation using easing curves
     _bounceAnimation = TweenSequence<double>([
       TweenSequenceItem(
         tween: Tween<double>(
@@ -111,7 +111,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
       ),
     ]).animate(_bounceController);
 
-    // Trigger haptics and rotation when bounce reaches the top
+    /// Trigger haptics and rotation when bounce reaches the top
     _bounceAnimation.addListener(() {
       final value = _bounceAnimation.value;
       if (!isDragging && value <= -19.5 && !_hasTriggeredAtTop) {
@@ -124,7 +124,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
       }
     });
 
-    // Small shake (jitter) animation when bouncing
+    /// Small shake (jitter) animation when bouncing
     _rotationAnimation = TweenSequence<double>([
       TweenSequenceItem(tween: Tween(begin: 0.0, end: -0.50), weight: 1),
       TweenSequenceItem(tween: Tween(begin: -0.50, end: 0.50), weight: 1),
@@ -142,7 +142,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
     super.dispose();
   }
 
-  // When drag ends, check if it passes the threshold to trigger action
+  /// When drag ends, check if it passes the threshold to trigger action
   void _handleDragEnd(DragEndDetails details) {
     final double acceptDragLimit = widget.height * 0.8;
     final double declineDragLimit = widget.height * 0.4;
@@ -155,7 +155,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
     _animateReset();
   }
 
-  // Animate drag reset to original position
+  /// Animate drag reset to original position
   void _animateReset() {
     _resetAnimation = Tween<double>(
       begin: _dragPosition,
@@ -178,13 +178,13 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
     final double acceptDragLimit = widget.height * 0.8;
     final double declineDragLimit = widget.height * 0.4;
 
-    // Used to interpolate color blending based on drag direction and distance
+    /// Used to interpolate color blending based on drag direction and distance
     final double dragRatio =
         _dragPosition < 0
             ? (_dragPosition / acceptDragLimit).clamp(-1.0, 0.0)
             : (_dragPosition / declineDragLimit).clamp(0.0, 1.0);
 
-    // Background color changes with drag toward green or red
+    /// Background color changes with drag toward green or red
     final Color dynamicBtnColor =
         dragRatio < 0
             ? Color.lerp(
@@ -196,7 +196,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
             ? Color.lerp(widget.callBtnBackgroundColor, Colors.red, dragRatio)!
             : widget.callBtnBackgroundColor;
 
-    // Icon color is white when dragging, otherwise it's themed
+    /// Icon color is white when dragging, otherwise it's themed
     final Color dynamicIconColor =
         (isAccepting || isDeclining)
             ? Colors.white
@@ -206,7 +206,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
             ? widget.iconColorDecline
             : widget.iconColorAccept;
 
-    // Default fallback icons
+    /// Default fallback icons
     final Widget defaultAcceptIcon = Icon(
       Icons.call,
       color: dynamicIconColor,
@@ -218,7 +218,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
       size: widget.iconSize,
     );
 
-    // Pick icon based on drag direction
+    /// Pick icon based on drag direction
     final Widget iconWidget =
         isAccepting
             ? (widget.acceptIcon ?? defaultAcceptIcon)
@@ -226,7 +226,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
             ? (widget.declineIcon ?? defaultDeclineIcon)
             : defaultAcceptIcon;
 
-    // Trigger haptic once per drag beyond threshold
+    /// Trigger haptic once per drag beyond threshold
     if (!_hapticTriggered &&
         (_dragPosition < -acceptDragLimit * 0.8 - 5 ||
             _dragPosition > declineDragLimit * 0.4 + 5)) {
@@ -250,8 +250,8 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            //-------------------------------------------------------------------------
-            //----------------------------- ANSWER TEXT -------------------------------
+            ///-------------------------------------------------------------------------
+            ///----------------------------- ANSWER TEXT -------------------------------
             AnimatedBuilder(
               animation: _bounceAnimation,
               builder: (context, child) {
@@ -262,7 +262,7 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
                   offset: Offset(0, totalOffset),
                   child: Column(
                     children: [
-                      // Accept label fades with drag amount
+                      /// Accept label fades with drag amount
                       AnimatedOpacity(
                         duration: const Duration(milliseconds: 50),
                         opacity: (1.0 -
@@ -284,10 +284,10 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
                       ),
                       const SizedBox(height: 40),
 
-                      //-------------------------------------------------------------------------
-                      //----------------------------- CALL BUTTON -------------------------------
+                      ///-------------------------------------------------------------------------
+                      ///----------------------------- CALL BUTTON -------------------------------
 
-                      // Call button with bounce, shake, and rotation
+                      /// Call button with bounce, shake, and rotation
                       Container(
                         height: widget.buttonSize,
                         width: widget.buttonSize,
@@ -322,10 +322,10 @@ class _BouncingCallSliderState extends State<BouncingCallSlider>
               },
             ),
 
-            //--------------------------------------------------------------------------
-            //----------------------------- DECLINE TEXT -------------------------------
+            ///--------------------------------------------------------------------------
+            ///----------------------------- DECLINE TEXT -------------------------------
 
-            // Bottom: Decline label with fade out
+            /// Bottom: Decline label with fade out
             AnimatedOpacity(
               duration: const Duration(milliseconds: 50),
               opacity:
