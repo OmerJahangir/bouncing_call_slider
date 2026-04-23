@@ -1,3 +1,17 @@
+## [1.1.0] - 2026-04-23
+
+🔧 Updated for latest Android & iOS support
+
+### 🛠️ Changed
+- Broadened Dart SDK constraint to `>=3.0.0 <4.0.0` for wider compatibility
+- Updated minimum Flutter version to `>=3.10.0`
+- Added explicit `platforms` declaration (Android, iOS, Web, Linux, macOS, Windows)
+- Added `topics` for better pub.dev discoverability
+- Fixed `repository` and `issue_tracker` URLs in pubspec
+- Fixed package name reference in README usage example
+
+---
+
 ## [1.0.0] - 2025-07-01
 
 🎉 Initial release of **Bouncing Call Slider**

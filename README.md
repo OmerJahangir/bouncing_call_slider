@@ -29,7 +29,7 @@ Add this package to your project by copying the source code or importing it into
 
 ```yaml
 dependencies:
-  call_slider_button: ^1.0.0
+  bouncing_call_slider: ^1.1.0
 ```
 
 Then run:
@@ -41,7 +41,7 @@ dart pub get
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:call_slider_button/bouncing_call_slider.dart';
+import 'package:bouncing_call_slider/bouncing_call_slider.dart';
 
 BouncingCallSlider(
   onAccept: () => print("Accepted!"),
