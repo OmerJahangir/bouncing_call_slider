@@ -1,3 +1,9 @@
+## [1.1.1] 
+
+### Changed
+- Package now supports `Flutter 3.0.0` and all later versions.
+- Ensures wider support across older Flutter 3.x projects.
+
 ## [1.1.0] - 2026-04-23
 
 🔧 Updated for latest Android & iOS support
